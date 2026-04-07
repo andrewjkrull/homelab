@@ -3,6 +3,12 @@
   acme_ca_root /data/caddy/step-ca-root.crt
   http_port  8080
   https_port 8443
+
+  # Disable http-01 (needs port 80), force tls-alpn-01 on our HTTPS port
+  cert_issuer acme {
+    disable_http_challenge
+    alt_tlsalpn_port 8443
+  }
 }
 
 step-ca.test:8443 {
@@ -10,34 +16,13 @@ step-ca.test:8443 {
 }
 
 dockhand.test:8443 {
-  tls {
-    issuer acme {
-      dir https://step-ca.test:9000/acme/acme/directory
-      trusted_roots /data/caddy/step-ca-root.crt
-      challenges tls-alpn
-    }
-  }
   reverse_proxy dockhand:3000
 }
 
 flatnotes.test:8443 {
-  tls {
-    issuer acme {
-      dir https://step-ca.test:9000/acme/acme/directory
-      trusted_roots /data/caddy/step-ca-root.crt
-      challenges tls-alpn
-    }
-  }
   reverse_proxy flatnotes:8080
 }
 
 vaultwarden.test:8443 {
-  tls {
-    issuer acme {
-      dir https://step-ca.test:9000/acme/acme/directory
-      trusted_roots /data/caddy/step-ca-root.crt
-      challenges tls-alpn
-    }
-  }
   reverse_proxy vaultwarden:80
 }
