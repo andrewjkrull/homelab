@@ -1,5 +1,5 @@
 {
-  # Use Step CA as ACME provider
+  # Use Step CA as ACME provider - reached by container name on homelab network
   acme_ca https://step-ca:9000/acme/acme/directory
   acme_ca_root /data/caddy/step-ca-root.crt
 

@@ -11,5 +11,8 @@ step-ca/config/ca.json
 # Caddy runtime data
 caddy/data/
 
+# Working Directory
+tmp/
+
 # Local overrides
 docker-compose.override.yml
