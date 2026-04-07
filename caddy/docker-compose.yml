@@ -13,7 +13,6 @@ services:
       - "dockhand.test:192.168.10.77"
       - "flatnotes.test:192.168.10.77"
       - "vaultwarden.test:192.168.10.77"
-      - "step-ca.test:192.168.10.77"
     networks:
       - homelab
     logging:
