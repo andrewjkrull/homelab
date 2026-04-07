@@ -1,0 +1,16 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      DOMAIN: https://vaultwarden.test:8443
+      ADMIN_TOKEN: ${ADMIN_TOKEN}
+      SIGNUPS_ALLOWED: "false"
+    volumes:
+      - /data/vaultwarden:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: 1M
+        max-file: "2"

@@ -1,0 +1,15 @@
+# Secret and environment files - never commit these
+.env
+.env.*
+!.env.example
+
+# Step CA secrets
+step-ca/secrets/
+step-ca/certs/root_ca.crt
+step-ca/config/ca.json
+
+# Caddy runtime data
+caddy/data/
+
+# Local overrides
+docker-compose.override.yml

@@ -1,0 +1,36 @@
+services:
+  flatnotes:
+    image: dullage/flatnotes:latest
+    container_name: flatnotes
+    restart: unless-stopped
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Chicago
+      FLATNOTES_AUTH_TYPE: password
+      FLATNOTES_USERNAME: ${FLATNOTES_USERNAME}
+      FLATNOTES_PASSWORD: ${FLATNOTES_PASSWORD}
+      FLATNOTES_SECRET_KEY: ${FLATNOTES_SECRET_KEY}
+      FLATNOTES_QUICK_ACCESS_SORT: lastModified
+    volumes:
+      - /data/flatnotes/data:/data
+      - /data/flatnotes/index:/data/.flatnotes
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 100M
+        reservations:
+          cpus: "0.25"
+          memory: 50M
+    logging:
+      driver: json-file
+      options:
+        max-size: 1M
+        max-file: "2"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
