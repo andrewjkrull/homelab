@@ -9,12 +9,15 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - /data/caddy:/data
-    extra_hosts:
-      - "dockhand.test:192.168.10.77"
-      - "flatnotes.test:192.168.10.77"
-      - "vaultwarden.test:192.168.10.77"
+    networks:
+      - homelab
     logging:
       driver: json-file
       options:
         max-size: 1M
         max-file: "2"
+
+networks:
+  homelab:
+    name: homelab
+    driver: bridge

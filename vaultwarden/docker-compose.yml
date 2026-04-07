@@ -9,8 +9,15 @@ services:
       SIGNUPS_ALLOWED: "false"
     volumes:
       - /data/vaultwarden:/data
+    networks:
+      - homelab
     logging:
       driver: json-file
       options:
         max-size: 1M
         max-file: "2"
+
+networks:
+  homelab:
+    name: homelab
+    external: true
