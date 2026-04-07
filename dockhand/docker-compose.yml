@@ -3,6 +3,7 @@ services:
     image: fnsys/dockhand:latest
     container_name: dockhand
     restart: unless-stopped
+    user: "1000:989"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /data/dockhand:/app/data
