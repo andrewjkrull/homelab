@@ -12,7 +12,6 @@ services:
       FLATNOTES_PASSWORD: ${FLATNOTES_PASSWORD}
       FLATNOTES_SECRET_KEY: ${FLATNOTES_SECRET_KEY}
       FLATNOTES_QUICK_ACCESS_SORT: lastModified
-      FLATNOTES_QUICK_ACCESS_SORT: lastModified
     volumes:
       - /data/flatnotes/data:/data
       - /data/flatnotes/index:/data/.flatnotes
