@@ -1,6 +1,6 @@
 {
   # Use Step CA as ACME provider
-  acme_ca https://step-ca.test:9000/acme/acme/directory
+  acme_ca https://step-ca:9000/acme/acme/directory
   acme_ca_root /data/caddy/step-ca-root.crt
 
   # Non-standard ports
