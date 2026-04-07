@@ -1,6 +1,6 @@
 {
-  # Use Step CA as ACME provider - reached by container name on homelab network
-  acme_ca https://step-ca:9000/acme/acme/directory
+  # Use Step CA as ACME provider - resolved via network alias on homelab network
+  acme_ca https://step-ca.test:9000/acme/acme/directory
   acme_ca_root /data/caddy/step-ca-root.crt
 
   # Non-standard ports
