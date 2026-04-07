@@ -1,0 +1,32 @@
+services:
+  tasks:
+    image: baldissaramatheus/tasks.md:latest
+    container_name: tasks
+    restart: unless-stopped
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Chicago
+    volumes:
+      - /data/tasks/tasks:/tasks
+      - /data/tasks/config:/config
+    networks:
+      - homelab
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 400M
+        reservations:
+          cpus: "0.25"
+          memory: 200M
+    logging:
+      driver: json-file
+      options:
+        max-size: 1M
+        max-file: "2"
+
+networks:
+  homelab:
+    name: homelab
+    external: true

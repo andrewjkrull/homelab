@@ -17,3 +17,8 @@ vaultwarden.test:8443 {
   tls internal
   reverse_proxy vaultwarden:80
 }
+
+tasks.test:8443 {
+  tls internal
+  reverse_proxy tasks:8080
+}
